@@ -8,7 +8,7 @@ const API = "http://localhost:5000"
 function App() {
   const [title, setTitle] = useState("");
   const [time, setTime] = useState("");
-  const [todos, setTodos] = useState("");
+  const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(false);
 
   // Load todos on page load
@@ -53,7 +53,7 @@ function App() {
   }
 
   const handleDelete = async (id) => {
-    await fetch(API + "/todos" + id, {
+    await fetch(API + "/todos/" + id, {
       method: "DELETE",
     })
 
@@ -70,7 +70,7 @@ function App() {
       }
     })
 
-    setTodos((prevState) => prevState.map((t) => (t.id === data.id) ? (t = data) : t));
+    setTodos((prevState) => prevState.map((todo) => (todo.id === data.id) ? (todo = data) : todo));
   }
 
   if (loading) {
@@ -90,6 +90,7 @@ function App() {
             <input
               type="text"
               name="title"
+              id="title"
               placeholder='Titulo da Tarefa'
               onChange={(e) => setTitle(e.target.value)}
               value={title || ""}
@@ -101,6 +102,7 @@ function App() {
             <input
               type="text"
               name="time"
+              id="title"
               placeholder='Tempo estimado (em horas)'
               onChange={(e) => setTime(e.target.value)}
               value={time || ""}
@@ -113,9 +115,10 @@ function App() {
       <div className="list-todo">
         <h2>Lista de tarefas:</h2>
         {todos.length === 0 && <p>Não há tarefas!</p>}
+        {/* */}
         {todos.map((todo) => (
           <div className="todo" key={todo.id}>
-            <h3 className='{todo.done ? "todo.none": ""}'>{todo.title}</h3>
+            <h3 className={todo.done ? "todo-done" : ""}>{todo.title}</h3>
             <p>Duração: {todo.time}</p>
             <div className="actions">
               <span onClick={() => handleEdit(todo)}>
@@ -125,7 +128,8 @@ function App() {
             </div>
           </div>
         ))
-        };
+        }
+
       </div>
     </div>
   );

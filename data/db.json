@@ -1,27 +1,21 @@
 {
   "todos": [
     {
-      "id": 0.17129504263710782,
-      "title": "primeira tarefa",
-      "time": "2h",
-      "done": false
-    },
-    {
-      "id": 0.07497711678009589,
+      "id": 0.7557547453729876,
       "title": "segunda tarefa",
-      "time": "3h",
-      "done": false
-    },
-    {
-      "id": 0.45249521121390646,
-      "title": "teste",
       "time": "2h",
+      "done": true
+    },
+    {
+      "id": 0.11371825040850392,
+      "title": "Pintar portao",
+      "time": "6h",
       "done": false
     },
     {
-      "id": 0.8205019201078465,
-      "title": "teste3",
-      "time": "1h",
+      "id": 0.5735616887909554,
+      "title": "Estudar JavaScript",
+      "time": "8h",
       "done": false
     }
   ]
